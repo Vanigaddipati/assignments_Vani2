@@ -4,7 +4,9 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 public class barnsNnobles {
 	static WebDriver driver; 
@@ -20,7 +22,7 @@ public class barnsNnobles {
 		}
 		return advstatus;
 	}
-	
+	// Go to barnes and nobles and then click on advertisement by clicking I'll pass.
 	
 	public static void main(String[] args) {
 		driver=new ChromeDriver();
@@ -30,8 +32,15 @@ public class barnsNnobles {
 			if (Advpresent()) {
 				driver.findElement(By.cssSelector("#bx-element-891353-txSrrII > button")).click();
 							}
-				
+		
+			// Now hoover on Games & collections and select best seller option
 			
+			WebElement games= driver.findElement(By.linkText("Games & Collectibles"));
+			Actions action=new Actions(driver);
+			action.moveToElement(games).perform();
+			driver.findElement(By.linkText("Bestsellers")).click();		
+			
+						
 		}
 		
 				
